@@ -197,6 +197,7 @@ has _mysql => (
             my %option_for = (
                 mysql_compression     => sub { $_[0] ? '--compress' : ()  },
                 mysql_ssl             => sub { $_[0] ? '--ssl'      : ()  },
+                mysql_ssl_mode        => sub { '--ssl-mode',        $_[0] },
                 mysql_connect_timeout => sub { '--connect_timeout', $_[0] },
                 mysql_init_command    => sub { '--init-command',    $_[0] },
                 mysql_socket          => sub { '--socket',          $_[0] },
@@ -493,6 +494,14 @@ to C<mysql> client options will be passed to the client, as follows:
 =item * C<mysql_compression=1>: C<--compress>
 
 =item * C<mysql_ssl=1>: C<--ssl>
+
+Deprecated from MySQL 8.0. Consider using C<mysql_ssl_mode> instead.
+
+=item * C<mysql_ssl_mode=VERIFY_IDENTITY>: C<--ssl-mode>
+
+Available from MySQL version 5.7.11 and later. Requires a valid mode parameter.
+Valid mode parameters are: 'DISABLED', 'PREFERRED', 'REQUIRED', 'VERIFY_CA' and
+'VERIFY_IDENTITY'.
 
 =item * C<mysql_connect_timeout>: C<--connect_timeout>
 
