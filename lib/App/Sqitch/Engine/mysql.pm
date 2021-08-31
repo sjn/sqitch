@@ -206,6 +206,7 @@ has _mysql => (
                 mysql_ssl_ca_file     => sub { '--ssl-ca',          $_[0] },
                 mysql_ssl_ca_path     => sub { '--ssl-capath',      $_[0] },
                 mysql_ssl_cipher      => sub { '--ssl-cipher',      $_[0] },
+                mysql_login_path      => sub { '--login-path',      $_[0] },
             );
             while (@p) {
                 my ($k, $v) = (shift @p, shift @p);
@@ -499,9 +500,9 @@ Deprecated from MySQL 8.0. Consider using C<mysql_ssl_mode> instead.
 
 =item * C<mysql_ssl_mode=VERIFY_IDENTITY>: C<--ssl-mode>
 
-Available from MySQL version 5.7.11 and later. Requires a valid mode parameter.
-Valid mode parameters are: 'DISABLED', 'PREFERRED', 'REQUIRED', 'VERIFY_CA' and
-'VERIFY_IDENTITY'.
+Available from MySQL version 5.7.11 and later. Requires a valid mode
+parameter.  Valid mode parameters are: 'DISABLED', 'PREFERRED',
+'REQUIRED', 'VERIFY_CA' and 'VERIFY_IDENTITY'.
 
 =item * C<mysql_connect_timeout>: C<--connect_timeout>
 
@@ -518,6 +519,12 @@ Valid mode parameters are: 'DISABLED', 'PREFERRED', 'REQUIRED', 'VERIFY_CA' and
 =item * C<mysql_ssl_ca_path>: C<--ssl-capath>
 
 =item * C<mysql_ssl_cipher>: C<--ssl-cipher>
+
+=item * C<mysql_login_path>: C<--login-path>
+
+Specify a C<.mylogin.cnf> login path, for custom login configuration.
+See L<https://dev.mysql.com/doc/refman/8.0/en/mysql-config-editor.html>
+for details on this feature. Require MySQL version 5.6 or newer.
 
 =back
 
